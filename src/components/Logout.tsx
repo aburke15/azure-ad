@@ -10,7 +10,18 @@ const handleLogout = (
   instance: IPublicClientApplication,
   inProgress: InteractionStatus,
   isAuthenticated: boolean
-): void => {};
+): void => {
+  if (inProgress === InteractionStatus.None && isAuthenticated) {
+    instance
+      .logoutPopup()
+      .then(() => {
+        console.log("Logout Success");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+};
 
 const Logout = () => {
   const { instance, inProgress } = useMsal();

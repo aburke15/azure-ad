@@ -4,8 +4,13 @@ import {
   InteractionStatus,
   IPublicClientApplication,
 } from "@azure/msal-browser";
-import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 import { loginPopupRequest } from "../authConfig";
+
+interface ILoginProps {
+  instance: IPublicClientApplication;
+  inProgress: InteractionStatus;
+  isAuthenticated: boolean;
+}
 
 const handleLogin = (
   instance: IPublicClientApplication,
@@ -24,9 +29,10 @@ const handleLogin = (
   }
 };
 
-const Login = () => {
-  const { instance, inProgress } = useMsal();
-  const isAuthenticated = useIsAuthenticated();
+const Login = (props: ILoginProps) => {
+  const instance = props.instance;
+  const inProgress = props.inProgress;
+  const isAuthenticated = props.isAuthenticated;
 
   return (
     <button onClick={() => handleLogin(instance, inProgress, isAuthenticated)}>
