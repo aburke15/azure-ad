@@ -1,5 +1,5 @@
 import { Configuration, PopupRequest, RedirectRequest } from "@azure/msal-browser";
-import { reactMsalClientId, reactMsalAuthority, reactMsalRedirectUri } from "./env.local";
+import { reactMsalClientId, reactMsalAuthority, reactMsalRedirectUri } from "./env";
 
 export const msalConfig: Configuration = {
   auth: {
