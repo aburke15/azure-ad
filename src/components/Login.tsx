@@ -21,7 +21,7 @@ const handleLogin = (
     instance
       .loginPopup(loginPopupRequest)
       .then((loginResponse) => {
-        console.log(loginResponse.account);
+        console.log("Login Success");
       })
       .catch((error) => {
         console.log(error);
