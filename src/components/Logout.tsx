@@ -28,7 +28,10 @@ const Logout = () => {
   const isAuthenticated = useIsAuthenticated();
 
   return (
-    <button onClick={() => handleLogout(instance, inProgress, isAuthenticated)}>
+    <button
+      className="btn btn-primary"
+      onClick={() => handleLogout(instance, inProgress, isAuthenticated)}
+    >
       Logout
     </button>
   );

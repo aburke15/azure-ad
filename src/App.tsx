@@ -1,3 +1,4 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -14,7 +15,7 @@ const App = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="App">
+      <div className="App container">
         <Login
           instance={instance}
           inProgress={inProgress}
@@ -25,7 +26,7 @@ const App = () => {
   }
 
   return (
-    <div className="App">
+    <div className="App container">
       <Router>
         <Routes>
           <Route
