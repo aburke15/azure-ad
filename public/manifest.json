@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Azure AD",
+  "name": "Azure AD Demo App",
   "icons": [
     {
       "src": "favicon.ico",

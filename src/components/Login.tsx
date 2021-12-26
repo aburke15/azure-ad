@@ -35,9 +35,15 @@ const Login = (props: ILoginProps) => {
   const isAuthenticated = props.isAuthenticated;
 
   return (
-    <button onClick={() => handleLogin(instance, inProgress, isAuthenticated)}>
-      Sign In
-    </button>
+    <div className="container mt-5">
+      <h3>This is my page</h3>
+      <button
+        className="btn btn-primary mt-2"
+        onClick={() => handleLogin(instance, inProgress, isAuthenticated)}
+      >
+        Sign In
+      </button>
+    </div>
   );
 };
 

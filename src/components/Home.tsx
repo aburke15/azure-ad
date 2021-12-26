@@ -10,7 +10,7 @@ interface IHomeProps {
 const Home = (props: IHomeProps) => {
   if (props.isAuthenticated) {
     return (
-      <div>
+      <div className="container mt-5">
         Hello {props.name}, you are in!{" "}
         <span>
           <Logout />
