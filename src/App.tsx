@@ -5,12 +5,16 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import { AccountInfo } from "@azure/msal-common/dist/account/AccountInfo";
 
 interface IAppProps {}
 
 const App = () => {
   const isAuthenticated = useIsAuthenticated();
-  const { instance, inProgress } = useMsal();
+  const { instance, inProgress, accounts } = useMsal();
+
+  const account: AccountInfo = accounts && accounts[0];
+  const name = account && account.name;
 
   if (!isAuthenticated) {
     return (
@@ -30,7 +34,9 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={<Home isAuthenticated={isAuthenticated} name="Andre" />}
+            element={
+              <Home isAuthenticated={isAuthenticated} name={name as string} />
+            }
           />
         </Routes>
       </Router>
