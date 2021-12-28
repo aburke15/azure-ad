@@ -5,7 +5,7 @@ import {
   InteractionStatus,
   IPublicClientApplication,
 } from "@azure/msal-browser";
-import { loginPopupRequest } from "../authConfig";
+import { loginPopupRequest, loginRedirectRequest } from "../authConfig";
 
 interface ILoginProps {
   instance: IPublicClientApplication;
@@ -20,8 +20,8 @@ const handleLogin = (
 ) => {
   if (inProgress === InteractionStatus.None && !isAuthenticated) {
     instance
-      .loginPopup(loginPopupRequest)
-      .then((loginResponse: AuthenticationResult) => {
+      .loginRedirect(loginRedirectRequest)
+      .then(() => {
         console.log("Login Success");
       })
       .catch((error: any) => {
