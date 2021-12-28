@@ -1,6 +1,7 @@
 import React from "react";
 
 import {
+  AuthenticationResult,
   InteractionStatus,
   IPublicClientApplication,
 } from "@azure/msal-browser";
@@ -20,26 +21,24 @@ const handleLogin = (
   if (inProgress === InteractionStatus.None && !isAuthenticated) {
     instance
       .loginPopup(loginPopupRequest)
-      .then((loginResponse) => {
+      .then((loginResponse: AuthenticationResult) => {
         console.log("Login Success");
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.log(error);
       });
   }
 };
 
 const Login = (props: ILoginProps) => {
-  const instance = props.instance;
-  const inProgress = props.inProgress;
-  const isAuthenticated = props.isAuthenticated;
-
   return (
     <div className="container mt-5">
       <h3>This is my page</h3>
       <button
         className="btn btn-primary mt-2"
-        onClick={() => handleLogin(instance, inProgress, isAuthenticated)}
+        onClick={() =>
+          handleLogin(props.instance, props.inProgress, props.isAuthenticated)
+        }
       >
         Sign In
       </button>
