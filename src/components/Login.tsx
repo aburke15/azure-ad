@@ -1,11 +1,11 @@
 import React from "react";
+import { Navigate } from "react-router-dom";
 
 import { InteractionStatus } from "@azure/msal-browser";
 import { loginRequest } from "../authConfig";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
-import { Navigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (): React.ReactElement => {
   const { instance, inProgress } = useMsal();
   const isAuthenticated = useIsAuthenticated();
 
@@ -23,7 +23,7 @@ const Login = () => {
   };
 
   if (isAuthenticated) {
-    return <Navigate to={"/"} />;
+    return <Navigate to="/" />;
   }
 
   return (

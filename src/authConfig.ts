@@ -1,4 +1,4 @@
-import { Configuration } from "@azure/msal-browser";
+import { Configuration, PopupRequest } from "@azure/msal-browser";
 import { reactMsalClientId, reactMsalAuthority, reactMsalRedirectUri } from "./env";
 
 export const msalConfig: Configuration = {
@@ -13,6 +13,6 @@ export const msalConfig: Configuration = {
   }
 };
 
-export const loginRequest = {
+export const loginRequest: PopupRequest = {
   scopes: ["openid", "profile", "User.Read"]
 }

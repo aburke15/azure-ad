@@ -7,7 +7,7 @@ import NotFound from "./components/NotFound";
 
 interface IAppProps {}
 
-const App = () => {
+const App = (): React.ReactElement => {
   return (
     <div className="App container">
       <Router>
