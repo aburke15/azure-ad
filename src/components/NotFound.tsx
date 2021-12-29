@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NotFound = () => {
+const NotFound = (): React.ReactElement => {
   return (
     <div className="container mt-5">
       <h3 className="mt-2">404</h3>

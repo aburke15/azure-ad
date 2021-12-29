@@ -3,14 +3,14 @@ import React from "react";
 import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 import { InteractionStatus } from "@azure/msal-browser";
 
-const Logout = () => {
+const Logout = (): React.ReactElement => {
   const { instance, inProgress } = useMsal();
   const isAuthenticated = useIsAuthenticated();
 
   const handleLogout = (): void => {
     if (inProgress === InteractionStatus.None && isAuthenticated) {
       instance
-        .logoutRedirect()
+        .logoutPopup()
         .then(() => {
           console.log("Logout Success");
         })

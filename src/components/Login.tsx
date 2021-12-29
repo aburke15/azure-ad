@@ -5,7 +5,7 @@ import { InteractionStatus } from "@azure/msal-browser";
 import { loginRequest } from "../authConfig";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 
-const Login = () => {
+const Login = (): React.ReactElement => {
   const { instance, inProgress } = useMsal();
   const isAuthenticated = useIsAuthenticated();
 
