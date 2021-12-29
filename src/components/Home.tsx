@@ -1,25 +1,25 @@
 import React from "react";
 import Logout from "./Logout";
 import { Navigate } from "react-router-dom";
+import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 
-interface IHomeProps {
-  name: string;
-  isAuthenticated: boolean;
-}
+const Home = () => {
+  const isAuthenticated = useIsAuthenticated();
+  const { accounts } = useMsal();
+  const account = accounts[0];
 
-const Home = (props: IHomeProps) => {
-  if (props.isAuthenticated) {
-    return (
-      <div className="container mt-5">
-        Hello {props.name}, you are in!{" "}
-        <span>
-          <Logout />
-        </span>
-      </div>
-    );
+  if (!isAuthenticated) {
+    return <Navigate to="/Login" />;
   }
 
-  return <Navigate to="/" />;
+  return (
+    <div className="container mt-5">
+      Hello {account.name}, you are in!{" "}
+      <span>
+        <Logout />
+      </span>
+    </div>
+  );
 };
 
 export default Home;
