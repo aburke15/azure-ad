@@ -1,45 +1,35 @@
 import React from "react";
 
-import {
-  AuthenticationResult,
-  InteractionStatus,
-  IPublicClientApplication,
-} from "@azure/msal-browser";
-import { loginPopupRequest, loginRedirectRequest } from "../authConfig";
+import { InteractionStatus } from "@azure/msal-browser";
+import { loginRequest } from "../authConfig";
+import { useIsAuthenticated, useMsal } from "@azure/msal-react";
+import { Navigate } from "react-router-dom";
 
-interface ILoginProps {
-  instance: IPublicClientApplication;
-  inProgress: InteractionStatus;
-  isAuthenticated: boolean;
-}
+const Login = () => {
+  const { instance, inProgress } = useMsal();
+  const isAuthenticated = useIsAuthenticated();
 
-const handleLogin = (
-  instance: IPublicClientApplication,
-  inProgress: InteractionStatus,
-  isAuthenticated: boolean
-) => {
-  if (inProgress === InteractionStatus.None && !isAuthenticated) {
-    instance
-      .loginRedirect(loginRedirectRequest)
-      .then(() => {
-        console.log("Login Success");
-      })
-      .catch((error: any) => {
-        console.log(error);
-      });
+  const handleLogin = (): void => {
+    if (inProgress === InteractionStatus.None && !isAuthenticated) {
+      instance
+        .loginPopup(loginRequest)
+        .then(() => {
+          console.log("Login Success");
+        })
+        .catch((error: any) => {
+          console.log(error);
+        });
+    }
+  };
+
+  if (isAuthenticated) {
+    return <Navigate to={"/"} />;
   }
-};
 
-const Login = (props: ILoginProps) => {
   return (
     <div className="container mt-5">
       <h3>This is my page</h3>
-      <button
-        className="btn btn-primary mt-2"
-        onClick={() =>
-          handleLogin(props.instance, props.inProgress, props.isAuthenticated)
-        }
-      >
+      <button className="btn btn-primary mt-2" onClick={() => handleLogin()}>
         Sign In
       </button>
     </div>

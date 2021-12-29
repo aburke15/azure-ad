@@ -1,4 +1,4 @@
-import { Configuration, PopupRequest, RedirectRequest } from "@azure/msal-browser";
+import { Configuration } from "@azure/msal-browser";
 import { reactMsalClientId, reactMsalAuthority, reactMsalRedirectUri } from "./env";
 
 export const msalConfig: Configuration = {
@@ -8,15 +8,11 @@ export const msalConfig: Configuration = {
     redirectUri: reactMsalRedirectUri,
   },
   cache: {
-    cacheLocation: "localStorage",
+    cacheLocation: "sessionStorage",
     storeAuthStateInCookie: false,
   }
 };
 
-export const loginPopupRequest: PopupRequest = {
-  scopes: ["openid", "profile", "User.Read"]
-}
-
-export const loginRedirectRequest: RedirectRequest = {
+export const loginRequest = {
   scopes: ["openid", "profile", "User.Read"]
 }
