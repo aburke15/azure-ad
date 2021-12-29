@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+
+import { useIsAuthenticated } from "@azure/msal-react";
 
 const NotFound = (): React.ReactElement => {
+  const isAuthenticated = useIsAuthenticated();
+  if (!isAuthenticated) {
+    return <Navigate to="/Login" />;
+  }
+
   return (
     <div className="container mt-5">
       <h3 className="mt-2">404</h3>

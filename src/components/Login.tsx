@@ -23,7 +23,7 @@ const Login = (): React.ReactElement => {
   };
 
   if (isAuthenticated) {
-    return <Navigate to={"/"} />;
+    return <Navigate to="/" />;
   }
 
   return (
