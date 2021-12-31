@@ -9,9 +9,9 @@ const Home = (): React.ReactElement => {
   const account = accounts[0];
   const name = account ? account.name : "";
 
-  if (!isAuthenticated) {
-    return <Navigate to="/Login" />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to="login" />;
+  // }
 
   return (
     <div className="container mt-5">

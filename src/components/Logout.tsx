@@ -10,7 +10,7 @@ const Logout = (): React.ReactElement => {
   const handleLogout = (): void => {
     if (inProgress === InteractionStatus.None && isAuthenticated) {
       instance
-        .logoutPopup()
+        .logoutRedirect()
         .then(() => {
           console.log("Logout Success");
         })
