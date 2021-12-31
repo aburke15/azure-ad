@@ -8,7 +8,7 @@ export const msalConfig: Configuration = {
     redirectUri: reactMsalRedirectUri,
   },
   cache: {
-    cacheLocation: "sessionStorage",
+    cacheLocation: "localStorage",
     storeAuthStateInCookie: false,
   }
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import { InteractionStatus } from "@azure/msal-browser";
 import { loginRequest } from "../authConfig";
@@ -8,6 +8,7 @@ import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 const Login = (): React.ReactElement => {
   const { instance, inProgress } = useMsal();
   const isAuthenticated = useIsAuthenticated();
+  let navigate = useNavigate();
 
   const handleLogin = (): void => {
     if (inProgress === InteractionStatus.None && !isAuthenticated) {
@@ -15,6 +16,7 @@ const Login = (): React.ReactElement => {
         .loginPopup(loginRequest)
         .then(() => {
           console.log("Login Success");
+          navigate("/");
         })
         .catch((error: any) => {
           console.log(error);

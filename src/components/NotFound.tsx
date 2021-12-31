@@ -6,7 +6,7 @@ import { useIsAuthenticated } from "@azure/msal-react";
 const NotFound = (): React.ReactElement => {
   const isAuthenticated = useIsAuthenticated();
   if (!isAuthenticated) {
-    return <Navigate to="/Login" />;
+    return <Navigate to="login" />;
   }
 
   return (
